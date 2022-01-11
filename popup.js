@@ -1,12 +1,24 @@
-import { Card_GetSuggestions } from "./repository/Card.js"
+import { Card_AddWord, Card_GetSuggestions } from "./repository/Card.js"
 
 const frontTextInput = document.getElementById('front_text')
 const backTextInput = document.getElementById('back_text')
+const submitButton = document.getElementById('submit')
+
+let front_text = ''
+let back_text = ''
 
 frontTextInput.onchange = (event) => {
-  const front_text = event.target.value
+  front_text = event.target.value
   Card_GetSuggestions({ front_text })
     .then(response => {
       backTextInput.value = response.back_text
+      back_text = response.back_text
+    })
+}
+
+submitButton.onclick = () => {
+  Card_AddWord({ front_text, back_text })
+    .then(() => {
+      alert('The word successfully added')
     })
 }
