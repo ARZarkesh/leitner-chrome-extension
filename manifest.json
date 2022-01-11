@@ -1,0 +1,16 @@
+{
+  "name": "My First Extension",
+  "description": "Surf the world with me",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "permissions": ["scripting"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": [
+    "https://leitner.colp.ir/"
+  ]
+}
