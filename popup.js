@@ -9,10 +9,10 @@ let back_text = ''
 
 frontTextInput.onchange = (event) => {
   front_text = event.target.value
-  Card_GetSuggestions({ front_text })
+  Card_GetSuggestions({ query: front_text })
     .then(response => {
-      backTextInput.value = response.back_text
-      back_text = response.back_text
+      backTextInput.value = response.translate
+      back_text = response.translate
     })
 }
 
