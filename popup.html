@@ -5,14 +5,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 class="header">Leitner</h1>
-  <label for="front_text">Word</label>
-  <input id="front_text" type="text">
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <h1 class="header">Leitner</h1>
+    <img class="logo" width="128" height="128" src="./assets/images/logo.png" alt="Logo">
+  </div>
+  <div class="input-container">
+    <label class="input-container__label" for="front_text">Word</label>
+    <input class="input-container__input" id="front_text" type="text">
+  </div>
+  <div class="input-container">
+    <label class="input-container__label" for="back_text">Translation</label>
+    <input class="input-container__input" id="back_text" type="text">
+  </div>
 
-  <label for="back_text">Translation</label>
-  <input id="back_text" type="text">
-
-  <button id="submit" type="button">Submit</button>
+  <button class="submit-button" id="submit" type="button">Add to Leitner</button>
 
   <script src="popup.js" type="module"></script>
 </body>
