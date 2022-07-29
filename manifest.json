@@ -1,6 +1,6 @@
 {
-  "name": "My First Extension",
-  "description": "Surf the world with me",
+  "name": "Leitner",
+  "description": "Learning by repetition",
   "version": "1.0.0",
   "manifest_version": 3,
   "permissions": ["scripting"],
@@ -12,5 +12,10 @@
   },
   "host_permissions": [
     "https://leitner.colp.ir/"
-  ]
+  ],
+  "icons": {
+    "16": "./assets/images/logo.png",
+    "48": "./assets/images/logo.png",
+    "128": "./assets/images/logo.png"
+  }
 }
