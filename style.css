@@ -40,8 +40,8 @@ body {
 
 .input-container__input {
   padding: 10px;
-  border: 2px solid var(--primary-500);
-  border-radius: 8px;
+  border: 1px solid var(--primary-500);
+  border-radius: 4px;
   flex-grow: 1;
   outline: none;
 }
@@ -54,9 +54,9 @@ body {
   width: 100%;
   padding: 10px;
   margin-top: 16px;
-  border: 2px solid var(--primary-200);
+  border: 1px solid var(--primary-200);
   outline: none;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: var(--primary-100);
   color: var(--white);
   font-weight: 700;
