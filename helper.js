@@ -1,6 +1,6 @@
 import { BASE_URL } from "./config.js"
 
-const token = 'c3sWOgPeXsT8IA2IiVT8yJFIJGc41Me9'
+const token = 'BQpQ05TAvA6wK5ftsIvGaENehYS7ZZk1'
 
 function getDeferedPromise() {
   const result = {}
