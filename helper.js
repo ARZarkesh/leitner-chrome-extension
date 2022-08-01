@@ -1,7 +1,5 @@
 import { BASE_URL } from "./config.js"
 
-const token = 'BQpQ05TAvA6wK5ftsIvGaENehYS7ZZk1'
-
 function getDeferedPromise() {
   const result = {}
   result.promise = new Promise((resolve, reject) => {
@@ -16,6 +14,15 @@ export async function httpGet(path, meta) {
   const request = new XMLHttpRequest()
 
   const queryString = meta?.body ? `?${Object.keys(meta.body).map(key => `${key}=${meta.body[key]}`).join('&')}` : ''
+
+  let token
+  const storedToken = localStorage.getItem('token')
+  if (storedToken) {
+    token = storedToken
+  } else {
+    token = window.prompt('Please enter your token')
+    localStorage.setItem('token', token)
+  }
 
   request.open('GET', `${BASE_URL}${path}${queryString}`, true)
   request.setRequestHeader('token', token)
@@ -71,6 +78,11 @@ export async function httpPost(path, meta) {
       console.log(err)
       deferred.reject(new Error('Unpacking Error'))
       return
+    }
+    if (this.status === 401) {
+      localStorage.removeItem('token')
+      token = window.prompt('Please enter your token')
+      localStorage.setItem('token', token)
     }
     if (this.status < 200 || this.status >= 400 || response?.status === 'error') {
       deferred.reject(response.error || response)
