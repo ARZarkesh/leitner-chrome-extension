@@ -13,7 +13,7 @@ export async function httpGet(path, meta) {
   const deferred = getDeferedPromise()
   const request = new XMLHttpRequest()
 
-  const queryString = meta?.body ? `?${Object.keys(meta.body).map(key => `${key}=${meta.body[key]}`).join('&')}` : ''
+  const queryString = meta?.body ? `?${Object.keys(meta.body).map(key => `${key}=${encodeURIComponent(meta.body[key])}`).join('&')}` : ''
 
   let token
   const storedToken = localStorage.getItem('token')
@@ -40,6 +40,12 @@ export async function httpGet(path, meta) {
       console.log(err)
       deferred.reject(new Error('Unpacking Error'))
       return
+    }
+    if (this.status === 401) {
+      localStorage.removeItem('token')
+      token = window.prompt('Please enter your token')
+      localStorage.setItem('token', token)
+      request.send()
     }
     if (this.status < 200 || this.status >= 400 || response?.status === 'error') {
       deferred.reject(response.error || response)
@@ -83,6 +89,7 @@ export async function httpPost(path, meta) {
       localStorage.removeItem('token')
       token = window.prompt('Please enter your token')
       localStorage.setItem('token', token)
+      request.send()
     }
     if (this.status < 200 || this.status >= 400 || response?.status === 'error') {
       deferred.reject(response.error || response)
